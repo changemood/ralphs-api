@@ -1,19 +1,14 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-# バージョン
+## バージョン
 * Ruby version 2.4.0
 * Rails version 5.1.4
 
-# DB
+## DB
 * postgresql
  
-# 環境構築手順
-1. repositoryをクローン  
+## 環境構築手順
+1. repositoryをクローン  
   `$ git clone https://github.com/changemood/ralphs-api`
 
 2. Ruby, Rails, bundlerをインストール  
