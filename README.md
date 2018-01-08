@@ -5,20 +5,27 @@ application up and running.
 
 Things you may want to cover:
 
-* Ruby version
+# バージョン
+* Ruby version 2.4.0
+* Rails version 5.1.4
 
-* System dependencies
+# DB
+* postgresql
+ 
+# 環境構築手順
+1. repositoryをクローン  
+  `$ git clone https://github.com/changemood/ralphs-api`
 
-* Configuration
+2. Ruby, Rails, bundlerをインストール  
+   Ruby: [https://dev.classmethod.jp/server-side/language/build-ruby-environment-by-rbenv/](https://dev.classmethod.jp/server-side/language/build-ruby-environment-by-rbenv/)  
+   Rails: [http://installrails.com/steps/choose_os_version](http://installrails.com/steps/choose_os_version)
+   bundler: `$ gem install bundler`
 
-* Database creation
+3. Gemのインストール  
+`$ bundle install`
 
-* Database initialization
+4. DB構築  
+`$ rake db:create db:migrate`
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+5. rails app を起動  
+`$ rails s` 
