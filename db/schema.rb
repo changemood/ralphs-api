@@ -17,8 +17,6 @@ ActiveRecord::Schema.define(version: 20180108131927) do
 
   create_table "cards", force: :cascade do |t|
     t.bigint "user_id"
-    t.string "genre"
-    t.string "tag"
     t.string "title"
     t.string "body"
     t.datetime "created_at", null: false
