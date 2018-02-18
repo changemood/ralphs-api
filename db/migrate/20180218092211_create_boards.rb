@@ -1,9 +1,8 @@
-class CreateCards < ActiveRecord::Migration[5.1]
+class CreateBoards < ActiveRecord::Migration[5.1]
   def change
-    create_table :cards do |t|
+    create_table :boards do |t|
       t.belongs_to :user, foreign_key: true
-      t.string :title
-      t.string :body
+      t.string :name
       t.timestamps
       t.timestamp :deleted_at
     end
