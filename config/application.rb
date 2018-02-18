@@ -32,6 +32,9 @@ module RalphsApi
     # 
     # protect_from_forgery with: :null_session
 
+    # to use flash for admin page
+    config.middleware.use ActionDispatch::Flash
+
     # For cors
     config.middleware.use Rack::Cors do
       allow do

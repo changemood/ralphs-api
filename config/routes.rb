@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :admins
   # devise_for :users
   namespace :api do
     # For authentication localhost:3000/api/v1/auth
