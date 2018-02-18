@@ -38,6 +38,10 @@ group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
   # User letter_opener for confirm email on development
   gem "letter_opener", :group => :development
+  # For testing
+  gem 'rspec-rails'
+  gem 'factory_bot'
+  gem 'faker'
 end
 
 group :development do
