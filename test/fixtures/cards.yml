@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  genre: MyString
+  title: MyString
+  body: MyString
+  delete_time: 2018-01-08 22:19:27
+
+two:
+  genre: MyString
+  title: MyString
+  body: MyString
+  delete_time: 2018-01-08 22:19:27
