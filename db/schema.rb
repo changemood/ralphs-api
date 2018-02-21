@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180108131927) do
+ActiveRecord::Schema.define(version: 20180221093200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,6 +23,29 @@ ActiveRecord::Schema.define(version: 20180108131927) do
     t.datetime "updated_at", null: false
     t.datetime "delete_at"
     t.index ["user_id"], name: "index_cards_on_user_id"
+  end
+
+  create_table "sr_events", force: :cascade do |t|
+    t.integer "review_count"
+    t.datetime "next_review_at"
+    t.datetime "last_review_at"
+    t.bigint "user_id"
+    t.bigint "card_id"
+    t.bigint "sr_master_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["card_id"], name: "index_sr_events_on_card_id"
+    t.index ["sr_master_id"], name: "index_sr_events_on_sr_master_id"
+    t.index ["user_id"], name: "index_sr_events_on_user_id"
+  end
+
+  create_table "sr_masters", force: :cascade do |t|
+    t.string "name"
+    t.integer "interval"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
   end
 
   create_table "users", force: :cascade do |t|
@@ -54,4 +77,7 @@ ActiveRecord::Schema.define(version: 20180108131927) do
   end
 
   add_foreign_key "cards", "users"
+  add_foreign_key "sr_events", "cards"
+  add_foreign_key "sr_events", "sr_masters"
+  add_foreign_key "sr_events", "users"
 end
