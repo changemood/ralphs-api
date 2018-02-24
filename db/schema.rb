@@ -10,10 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221093200) do
+ActiveRecord::Schema.define(version: 20180218100849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "boards", force: :cascade do |t|
+    t.bigint "user_id"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "deleted_at"
+    t.index ["user_id"], name: "index_boards_on_user_id"
+  end
 
   create_table "cards", force: :cascade do |t|
     t.bigint "user_id"
@@ -21,7 +30,9 @@ ActiveRecord::Schema.define(version: 20180221093200) do
     t.string "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.datetime "delete_at"
+    t.datetime "deleted_at"
+    t.bigint "board_id"
+    t.index ["board_id"], name: "index_cards_on_board_id"
     t.index ["user_id"], name: "index_cards_on_user_id"
   end
 
@@ -76,6 +87,8 @@ ActiveRecord::Schema.define(version: 20180221093200) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "boards", "users"
+  add_foreign_key "cards", "boards"
   add_foreign_key "cards", "users"
   add_foreign_key "sr_events", "cards"
   add_foreign_key "sr_events", "sr_masters"
