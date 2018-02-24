@@ -14,9 +14,9 @@ class CardsController < ApplicationController
     @card = @user.cards.new(card_params)
 
     if @card.save
-      render json: @card, status: :created, location: @board
+      format.json { render :show, status: :created, location: @card }
     else
-      render json: @card.errors, status: :unprocessable_entity
+      format.json { render json: @card.errors, status: :unprocessable_entity }
     end
   end
 
@@ -65,6 +65,6 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:user_id, :board_id, :title, :body)
+    params.require(:card).permit(:user_id, :board_id, :title, :body, :interval)
   end
 end
