@@ -1,7 +1,6 @@
 class SrRemindMailer < ApplicationMailer
   default from: 'remind@ralphs.com'
-  # layout "mailer"
-  # layout "remid"
+
   def remind(card)
     @card = card
     @user = User.find(card.user_id)
