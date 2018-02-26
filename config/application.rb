@@ -32,6 +32,9 @@ module RalphsApi
     # 
     # protect_from_forgery with: :null_session
 
+    # use sidekiq for backend job such as remind mail
+    config.active_job.queue_adapter = :sidekiq
+
     # For cors
     config.middleware.use Rack::Cors do
       allow do
