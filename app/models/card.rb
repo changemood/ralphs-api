@@ -4,9 +4,6 @@ class Card < ApplicationRecord
   belongs_to :board, required: false
   has_many :sr_events, dependent: :destroy
 
-  # when card is created, add sr_event record
-  after_create :add_sr_event
-
   # insert sr_event record
   # TODO: need to consider how we set next_review_at
   # for now we set interval for 4 hours
@@ -21,7 +18,7 @@ class Card < ApplicationRecord
     end
     # for now, we set it interval * review_count from second time
     next_review_at = Time.now + interval.hours * review_count
-    self.sr_events.create(interval: interval, review_count: review_count, next_review_at: next_review_at)
+    self.sr_events.create!(interval: interval, review_count: review_count, next_review_at: next_review_at, user_id: self.user_id)
   end
 
 end

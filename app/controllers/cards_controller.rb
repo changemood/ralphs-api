@@ -1,5 +1,5 @@
 class CardsController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_card, only: [:show, :update, :destroy] 
   before_action :set_cards, only: [:index] 
   before_action :set_user, only: [:create]
@@ -11,10 +11,12 @@ class CardsController < ApplicationController
 
   # POST /cards
   def create
-    @card = @user.cards.new(card_params)
+    @card = @user.cards.new(card_params_for_create)
 
     if @card.save
-      format.json { render :show, status: :created, location: @card }
+      params[:interval] ? @card.add_sr_event(params[:interval].to_i) : @card.add_sr_event
+      render json: @card, status: :created
+      # format.json { render :show, status: :created, location: @card }
     else
       format.json { render json: @card.errors, status: :unprocessable_entity }
     end
@@ -65,6 +67,11 @@ class CardsController < ApplicationController
   end
 
   def card_params
-    params.require(:card).permit(:user_id, :board_id, :title, :body, :interval)
+    params.require(:card).permit(:user_id, :board_id, :title, :body)
+  end
+
+  # This param is only for #create since we cannot require :card when we create.
+  def card_params_for_create
+    params.permit(:user_id, :board_id, :title, :body)
   end
 end

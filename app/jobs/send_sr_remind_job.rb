@@ -1,7 +1,7 @@
 class SendSrRemindJob < ApplicationJob
-  queue_as :default
+  queue_as :mailers
 
   def perform(card)
-    SrRemindMailer.remind(card).deliver_now
+    SrRemindMailer.remind(card).deliver_later
   end
 end
