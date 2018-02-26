@@ -9,4 +9,9 @@ Rails.application.routes.draw do
     resources :cards do
     end
   end
+
+  # for sidekiq dashboard
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: "/sidekiq"
+
 end
