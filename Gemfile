@@ -43,8 +43,6 @@ gem 'sinatra', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  # User letter_opener for confirm email on development
-  gem "letter_opener", :group => :development
   # For testing
   gem 'rspec-rails'
   gem 'factory_bot'
@@ -58,6 +56,9 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   # use foreman for development
   gem 'foreman'
+  # User letter_opener for confirm email on development
+  gem 'letter_opener_web'
+  gem 'letter_opener'
 end
 
 group :prodction do
