@@ -35,3 +35,18 @@ postgres: [https://qiita.com/_daisuke/items/13996621cf51f835494b](https://qiita.
 `$ foreman start`  
 **rails sでも起動できるが、その際は、sidekiqを別で起動すること**  
 (参考: [foreman で アプリケーションを動かす](https://qiita.com/7kaji/items/6a59977d2ad85604e7fd))
+
+
+# TODO
+- rspecのテストをかく
+- SrEvent のintervalをどのようにするか(ユーザー？こちら側？2回目以降のremindのinterval？)
+- メールのレイアウト・デザインの変更  
+
+**(注)やらないといけないことがあった場合は、こちらに書き込んでいく、またはissueを作ること**
+
+# DONE
+- user モデル作成
+- board モデル作成
+- card モデル作成
+- sr_event モデル作成
+- sr remind用のmailer jobの作成
