@@ -50,3 +50,5 @@ postgres: [https://qiita.com/_daisuke/items/13996621cf51f835494b](https://qiita.
 - card モデル作成
 - sr_event モデル作成
 - sr remind用のmailer jobの作成
+
+testing
