@@ -9,7 +9,7 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 require "action_view/railtie"
 require "action_cable/engine"
-# require "sprockets/railtie"
+require "sprockets/railtie" # Uncommented this for letter opener web
 require "rails/test_unit/railtie"
 
 # Require the gems listed in Gemfile, including any gems
@@ -31,6 +31,9 @@ module RalphsApi
     config.api_only = true
     # 
     # protect_from_forgery with: :null_session
+
+    # use sidekiq for backend job such as remind mail
+    config.active_job.queue_adapter = :sidekiq
 
     # For cors
     config.middleware.use Rack::Cors do

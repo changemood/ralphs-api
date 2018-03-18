@@ -9,4 +9,12 @@ Rails.application.routes.draw do
     resources :cards do
     end
   end
+
+  # for sidekiq dashboard
+  require 'sidekiq/web'
+  mount Sidekiq::Web, at: "/sidekiq"
+
+  # for letter opener web
+  mount LetterOpenerWeb::Engine, at: "/letter_opener" if Rails.env.development?
+
 end
